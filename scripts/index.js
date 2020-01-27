@@ -105,7 +105,7 @@ function mySolution(){
 
 		if (typeof className === 'string') {
 			currentElement.classList.add(className);
-		} else if (typeof className === 'object') {
+		} else if (Array.isArray(className)) {
 			currentElement.classList.add(...className);
 		}
 
@@ -113,9 +113,15 @@ function mySolution(){
 	}
 
 	function appendToParent(children, parent) {
-		children.forEach(child => parent.appendChild(child));
-
-		return parent;
+		if (parent) {
+			if (children && children.length) {
+				children.forEach(child => parent.appendChild(child));
+				
+				return parent;
+			}
+		}
+		
+		return;
 	}
 
 }
